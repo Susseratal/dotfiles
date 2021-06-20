@@ -1,0 +1,46 @@
+#####################################
+#                 _   _             #
+# _ __ ___  _   _| |_| |_ _ __ ___  #
+#| '_ ` _ \| | | | __| __| '__/ __| #
+#| | | | | | |_| | |_| |_| | | (__  #
+#|_| |_| |_|\__,_|\__|\__|_|  \___| #
+#                                   #
+#####################################
+
+# ================  IMAP ====================
+set imap_user = "youremail@gmail.com" #Your email address
+set imap_pass = "password" #Your password
+set header_cache = "~/.mutt/cache/headers"
+set message_cachedir = "~/.mutt/cache/bodies"
+set certificate_file = "~/.mutt/certificates"
+set move = no
+
+# ================  SMTP  ====================
+set smtp_url = "smtp://youremail@gmail.com@smtp.gmail.com:587/" #This might not be the correct port for you. check your email provider
+set smtp_pass = $imap_pass #use password you set on line 12
+set ssl_force_tls = yes # Require encrypted connection
+set smtp_authenticators = ‘gssapi:login’ #magically login when you're sending an email
+
+# ================  Composition  ====================
+set editor = "vim"      # Set your favourite editor.
+set edit_headers = yes  # See the headers when editing
+set charset = UTF-8     # value of $LANG; also fallback for send_charset
+# Sender, email address, and sign-off line must match
+unset use_domain        # because joe@localhost is just embarrassing
+set realname = "John Smith" #Your real name
+set from = "youremail@gmail.com" #email address
+set use_from = yes #use your email instead of domain because joe@localhost is embarrasing.
+set timeout = 30 #check for new mail every 30 seconds
+set mail_check = 60 #something to do with not checking new mail if you don't press buttons
+set sort = reverse-date #sets mutt to display newest message at the top, rather than the bottom
+source .muttcolor #set lovely colour from the muttcolor file
+
+# ================  HTML  ====================
+auto_view text/html
+
+# ================  Mailboxes  ====================
+set folder = "imaps://imap.gmail.com:993/"
+set spoolfile = "+INBOX"
+set record = "+[Gmail]Sent Mail"
+set postponed = "+[Gmail]Drafts"
+set trash = "+[Gmail]Trash"
